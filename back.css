@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+
+    /* Nền sân cỏ */
+    background: linear-gradient(
+        180deg,
+        #2e7d32 0%,
+        #388e3c 50%,
+        #1b5e20 100%
+    );
+
+    /* Tạo vân sân bóng */
+    background-size: 100% 40px;
+}
+
+/* Thêm lớp overlay tạo vạch sân */
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(white 2px, transparent 2px),
+        linear-gradient(90deg, white 2px, transparent 2px);
+    background-size: 200px 200px;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.ball {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    bottom: 30px;
+    right: 30px;
+
+    background: url('https://upload.wikimedia.org/wikipedia/commons/d/d3/Soccerball.svg') no-repeat center/cover;
+    
+    border-radius: 50%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+
+    animation: bounce 1.8s infinite ease-in-out,
+               spin 6s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Hiệu ứng nảy */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    40% {
+        transform: translateY(-35px) scale(1.05);
+    }
+    60% {
+        transform: translateY(-20px) scale(0.95);
+    }
+}
+
+.title {
+    position: absolute;
+    top: 20px;              /* cách mép trên */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    font-size: 48px;        /* chữ to */
+    font-weight: bold;
+    color: #ffffff;
+
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* nổi trên nền */
+}
+
+.menu {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 22px;
+    text-align: left;
+}
+
+/* Tiêu đề mùa */
+.season-title {
+    font-weight: bold;
+    font-size: 26px;
+    margin-top: 15px;
+}
+
+/* Nhánh nhỏ */
+.submenu {
+    margin-left: 20px;
+    margin-top: 5px;
+    opacity: 0.9;
+}
+
+/* Link click được */
+.link {
+    display: block;
+    text-decoration: none;
+    color: #a5ffb2;
+    transition: 0.3s;
+}
+
+/* Hover đẹp hơn */
+.link:hover {
+    color: #00ff88;
+    transform: translateX(5px);
+    text-shadow: 0 0 8px #00ff88;
+}
